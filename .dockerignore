@@ -1,0 +1,10 @@
+.vscode
+.husky/
+**/test/
+**/.eslintrc
+.gitignore
+**/.prettierignore
+**/.prettierrc
+**/README.md
+**/node_modules/
+**/dist/

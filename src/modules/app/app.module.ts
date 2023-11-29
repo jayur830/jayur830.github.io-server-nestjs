@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 // import { APP_INTERCEPTOR } from '@nestjs/core';
 // import { GraphQLModule } from '@nestjs/graphql';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { AboutMe } from '@/entities/about_me.entity';
 import { CompanyLogo } from '@/entities/company_logo.entity';
@@ -41,7 +41,7 @@ import { YearScalar } from '@/scalars/date/year.scalar';
         //   synchronize: false,
         //   logging: true,
         // };
-        return {
+        const config: TypeOrmModuleOptions = {
           type: 'mysql',
           host: process.env.MYSQL_HOST,
           port: +process.env.MYSQL_PORT,
@@ -52,6 +52,8 @@ import { YearScalar } from '@/scalars/date/year.scalar';
           synchronize: false,
           logging: true,
         };
+        console.log('config:', config);
+        return config;
       },
     }),
     // GraphQLModule.forRoot<ApolloDriverConfig>({
